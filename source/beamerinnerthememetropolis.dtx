@@ -197,15 +197,15 @@
 %   change the position of other elements.)
 %    \begin{macrocode}
 \newlength{\metropolis@titleseparator@linewidth}
-\setlength{\metropolis@titleseparator@linewidth}{0.4pt}
-\setbeamertemplate{title separator}{
-  \tikzexternaldisable%
-  \begin{tikzpicture}
-    \fill[fg] (0,0) rectangle (\textwidth, \metropolis@titleseparator@linewidth);
-  \end{tikzpicture}%
-  \tikzexternalenable%
-  \par%
-}
+\setlength{\metropolis@titleseparator@linewidth}{0.5pt}
+%\setbeamertemplate{title separator}{
+%  \tikzexternaldisable%
+%  \begin{tikzpicture}
+%    \fill[fg] (0,0) rectangle (\textwidth, \metropolis@titleseparator@linewidth);
+%  \end{tikzpicture}%
+%  \tikzexternalenable%
+%  \par%
+%}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -333,7 +333,7 @@
 %    \begin{macrocode}
 \newlength{\metropolis@progressonsectionpage}
 \newlength{\metropolis@progressonsectionpage@linewidth}
-\setlength{\metropolis@progressonsectionpage@linewidth}{0.4pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
 \setbeamertemplate{progress bar in section page}{
   \setlength{\metropolis@progressonsectionpage}{%
     \textwidth * \ratio{\insertframenumber pt}{\inserttotalframenumber pt}%
@@ -479,7 +479,8 @@
 % \subsubsection{Lists and floats}
 %
 %    \begin{macrocode}
-\setbeamertemplate{itemize items}{\textbullet}
+\setbeamertemplate{qed symbol}{$\blacksquare$}
+\setbeamertemplate{itemize items}{$\blacktriangleright$}
 \setbeamertemplate{caption label separator}{: }
 \setbeamertemplate{caption}[numbered]
 %    \end{macrocode}
