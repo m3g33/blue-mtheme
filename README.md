@@ -2,7 +2,7 @@
 
 # Forked Version
 Modified version that uses a different color theme and has other cosmetic changes.\
-(See example slides.)  
+(See [demo slides][]].) 
 
 ## Performed changes
 * Color theme changed from orange to Sherpa Blue
@@ -28,7 +28,8 @@ principles of the theme were described in a blog post
 
 Not convinced? Have a look at the [demo slides][].
 
-![Sample](http://i.imgur.com/Bxu52fz.png)
+<> ![Sample](http://i.imgur.com/Bxu52fz.png)
+TODO add sample images
 
 
 ## Installation
@@ -90,6 +91,6 @@ copyright notice header and license it under the same CC-BY-SA license. This
 does not affect the presentation that you create with the theme.
 
 
-[demo slides]: http://mirrors.ctan.org/macros/latex/contrib/beamer-contrib/themes/metropolis/demo/demo.pdf
+[demo slides]: example.pdf
 [manual]: http://mirrors.ctan.org/macros/latex/contrib/beamer-contrib/themes/metropolis/doc/metropolistheme.pdf
 [CTAN]: http://ctan.org/pkg/beamertheme-metropolis
