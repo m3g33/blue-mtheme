@@ -1,5 +1,16 @@
 ## Metropolis
 
+# Forked Version
+Modified version that uses a different color theme and has other cosmetic changes.\
+(See example slides.)  
+
+## Performed changes
+* Color theme changed from orange to Sherpa Blue
+* Use different math and mono fonts (XCharter and Inconsolata)
+* Plain text (also in math) is black
+* \emph is theme-colored, black!2 bg color replaced by white, block environments filled, ...
+
+---
 
 **IMPORTANT NOTICES FOR VERSION 1.0**
 
