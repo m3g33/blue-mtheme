@@ -2,7 +2,7 @@
 
 # Forked Version
 Modified version that uses a different color theme and has other cosmetic changes.\
-(See [demo slides][]].) 
+(See [demo slides][].) 
 
 ## Performed changes
 * Color theme changed from orange to Sherpa Blue
@@ -28,7 +28,7 @@ principles of the theme were described in a blog post
 
 Not convinced? Have a look at the [demo slides][].
 
-<> ![Sample](http://i.imgur.com/Bxu52fz.png)
+<!-- ![Sample](http://i.imgur.com/Bxu52fz.png) -->
 TODO add sample images
 
 
