@@ -81,6 +81,10 @@
 \definecolor{mDarkTeal}{HTML}{23373b}
 \definecolor{mLightBrown}{HTML}{EB811B}
 \definecolor{mLightGreen}{HTML}{14B03D}
+\definecolor{nicerBlue}{HTML}{004B5A} %18515B
+\definecolor{alertRed}{HTML}{DD1100}
+\definecolor{exampleGreen}{HTML}{007500}
+\definecolor{lovelyBlue}{HTML}{1AC9EB}
 %    \end{macrocode}
 %
 %
@@ -93,22 +97,26 @@
 %    \begin{macrocode}
 \newcommand{\metropolis@colors@dark}{
   \setbeamercolor{normal text}{%
-    fg=black!2,
-    bg=mDarkTeal
+    fg=white,
+    bg=nicerBlue
   }
   \usebeamercolor[fg]{normal text}
 }
 \newcommand{\metropolis@colors@light}{
   \setbeamercolor{normal text}{%
-    fg=mDarkTeal,
-    bg=black!2
+    fg=black,
+    bg=white
+  }
+  \setbeamercolor{themeColor}{%
+    fg=nicerBlue,
+    bg=white
   }
 }
 \setbeamercolor{alerted text}{%
-  fg=mLightBrown
+  fg=alertRed
 }
 \setbeamercolor{example text}{%
-  fg=mLightGreen
+  fg=exampleGreen
 }
 %    \end{macrocode}
 %
@@ -123,11 +131,14 @@
 % |beamercolorthemedefault.sty|.
 %
 %    \begin{macrocode}
-\setbeamercolor{titlelike}{use=normal text, parent=normal text}
-\setbeamercolor{author}{use=normal text, parent=normal text}
-\setbeamercolor{date}{use=normal text, parent=normal text}
-\setbeamercolor{institute}{use=normal text, parent=normal text}
-\setbeamercolor{structure}{use=normal text, fg=normal text.fg}
+\setbeamercolor{titlelike}{use=themeColor, parent=themeColor}
+\setbeamercolor{author}{use=themeColor, parent=themeColor}
+\setbeamercolor{date}{use=themeColor, parent=themeColor}
+\setbeamercolor{institute}{use=themeColor, parent=themeColor}
+\setbeamercolor{structure}{use=themeColor, fg=themeColor.fg}
+\setbeamercolor{footline}{fg=themeColor.fg}
+\setbeamercolor{emph}{fg=themeColor.fg}
+\setbeamercolor{qed symbol}{fg=themeColor.fg}
 %    \end{macrocode}
 %
 % The “primary” palette should be used for the most important navigational
@@ -136,10 +147,18 @@
 %
 %    \begin{macrocode}
 \setbeamercolor{palette primary}{%
-  use=normal text,
-  fg=normal text.bg,
-  bg=normal text.fg
+  use=themeColor,
+  fg=themeColor.bg,
+  bg=themeColor.fg
 }
+% Apparently nothing but the "standout" frame uses the palette primary.
+% So, I redefined it directly.
+% With problems, use this palette and revert primary back to "normal text"
+%\setbeamercolor{palette themeColor}{%
+%  use=themeColor,
+%  fg=themeColor.bg,
+%  bg=themeColor.fg
+%}
 \setbeamercolor{frametitle}{%
   use=palette primary,
   parent=palette primary
@@ -154,9 +173,9 @@
 %
 %    \begin{macrocode}
 \setbeamercolor{progress bar}{%
-  use=alerted text,
-  fg=alerted text.fg,
-  bg=alerted text.fg!50!black!30
+  use=themeColor,
+  fg=themeColor.fg!90,
+  bg=black!30
 }
 \setbeamercolor{title separator}{
   use=progress bar,
@@ -181,8 +200,8 @@
 %    \begin{macrocode}
 \newcommand{\metropolis@block@transparent}{
   \setbeamercolor{block title}{%
-    use=normal text,
-    fg=normal text.fg,
+    use=themeColor,
+    fg=themeColor.fg,
     bg=
   }
   \setbeamercolor{block body}{
@@ -191,27 +210,28 @@
 }
 \newcommand{\metropolis@block@fill}{
   \setbeamercolor{block title}{%
-    use=normal text,
-    fg=normal text.fg,
-    bg=normal text.bg!80!fg
+    use=themeColor,
+    fg=themeColor.bg,
+    bg=themeColor.fg!85!black
   }
   \setbeamercolor{block body}{
-    use={block title, normal text},
-    bg=block title.bg!50!normal text.bg
+    use={block title, normal text, themeColor},
+    fg=normal text.fg,
+    bg=themeColor.fg!15
   }
 }
 \setbeamercolor{block title alerted}{%
     use={block title, alerted text},
-    bg=block title.bg,
-    fg=alerted text.fg
+    bg=alerted text.fg!85!black,
+    fg=white
 }
 \setbeamercolor{block title example}{%
     use={block title, example text},
-    bg=block title.bg,
-    fg=example text.fg
+    bg=example text.fg!85!black,
+    fg=white
 }
-\setbeamercolor{block body alerted}{use=block body, parent=block body}
-\setbeamercolor{block body example}{use=block body, parent=block body}
+\setbeamercolor{block body alerted}{fg=normal text.fg, bg=alerted text.fg!20}
+\setbeamercolor{block body example}{fg=normal text.fg, bg=example text.fg!20}
 %    \end{macrocode}
 %
 % Footnotes
