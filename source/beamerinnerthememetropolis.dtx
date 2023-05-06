@@ -475,6 +475,23 @@
 % \end{macro}
 %
 %
+%   Add theorem block customization for non-italic theorem body
+% \subsubsection{Theorem blocks}
+%
+%    \begin{macrocode}
+%
+\setbeamertemplate{theorem begin}{
+	\begin{\inserttheoremblockenv}{%
+		\inserttheoremname
+		%\inserttheoremnumber
+		\ifx\inserttheoremaddition\@empty\else\ (\inserttheoremaddition)\fi%
+	}%
+	\normalfont% remove this if you want italic theorem/lemma/... body 
+	}
+\setbeamertemplate{theorem end}{\end{\inserttheoremblockenv}}
+%
+%    \end{macrocode}
+%
 %
 % \subsubsection{Lists and floats}
 %
