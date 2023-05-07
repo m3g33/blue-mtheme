@@ -23,8 +23,23 @@
 \setmainfont{Fira Sans}
 \setmonofont{inconsolata}
 
-\setmathfont{TeX Gyre DejaVu Math}[range={"0028,"0029,"007C,"007B,"007D,"1D49E},Scale=MatchLowercase]
-\setmathfont{TeX Gyre DejaVu Math}[range=cal,Scale=MatchLowercase]
+\setmathfont{TeX Gyre DejaVu Math}[range={"0028,"0029,"007C,"007B,"007D,"1D49E},Scale=MatchLowercase]% use brackets from other font family due to spacing
+\setmathfont{TeX Gyre DejaVu Math}[range=cal,Scale=MatchLowercase]% use calligraphic symbols from other font family due to legibility
 
+% set language (use documentclass to change!)
+\usepackage{babel}
+
+% add translations to German for theorem environments
+\newtranslation[to=German]{Conjecture}{Vermutung}
+\newtranslation[to=German]{Counterexample}{Gegenbeispiel}
+\newtranslation[to=German]{Theorem}{Theorem}% Greek style
+\newtranslation[to=German]{Corollary}{Korollar}
+
+% define new theorem environments
+\newtheorem{conjecture}[theorem]{\translate{Conjecture}}
+\newtheorem{counterexample}[theorem]{\translate{Counterexample}}
+\newtheorem{observation}[theorem]{\translate{Observation}}
+\newtheorem{remark}[theorem]{\translate{Remark}}
+
+% packages needed for the example slides
 \usepackage{algpseudocode}
-
