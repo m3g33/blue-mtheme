@@ -1,24 +1,6 @@
-\documentclass[10pt,aspectratio=169]{beamer}
+\documentclass[10pt,aspectratio=169,english]{beamer}
+\usepackage{mtheme-req}
 
-\usetheme{metropolis}
-\usepackage{appendixnumberbeamer}
-
-% use different fonts
-\usepackage{xcharter-otf}
-\usepackage{FiraSans}
-\usepackage{inconsolata}
-\setsansfont{Fira Sans}
-\setmainfont{Fira Sans}
-\setmonofont{inconsolata}
-
-\usepackage{booktabs}
-\usepackage[scale=2]{ccicons}
-
-\usepackage{pgfplots}
-\usepgfplotslibrary{dateplot}
-
-\usepackage{xspace}
-\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
 
 \title{Metropolis}
 \subtitle{A modern beamer theme}
@@ -27,11 +9,6 @@
 \institute{Center for modern beamer themes}
 % \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
 
-\renewcommand<>{\emph}[1]{%
-  {\usebeamercolor[fg]{emph}\only#2{\itshape}#1}%
-}
-
-\usepackage{algpseudocode}
 
 \begin{document}
 \metroset{block=fill} % to fill block environments
@@ -62,7 +39,7 @@
 	There are infinitely many primes.
 	\end{theorem}
 	\begin{lemma}
-	The value of Riemann zeta function $\zeta(2)$ is trancendental, namely,
+	The value of Riemann zeta function $\zeta(2)$ is transcendental, namely,
 	\begin{align*}\zeta(2) = \prod\limits_{p \in \mathbb{P}} \frac{1}{1 - \frac{1}{p^2}} = \frac{\pi^2}{6}.\end{align*}
 	\end{lemma}
 	\begin{proof}
@@ -95,7 +72,7 @@ We show that $\textsc{sat} \leq_C \textsc{taut}$ and then $\textsc{taut} \leq_C 
 \begin{enumerate}
 	\item Note that $\varphi$ is satisfiable \textit{iff} $\neg \varphi$ is not a tautology.
 	
-	\item Note that $\varphi$ is a tautology \textit{iff} $\varphi$ is satifiable and $\neg\varphi$ is not.
+	\item Note that $\varphi$ is a tautology \textit{iff} $\varphi$ is satisfiable and $\neg\varphi$ is not.
 \end{enumerate}
 Hence, the respective oracles can be used as follows:
 \begin{columns}[T,onlytextwidth]
@@ -115,9 +92,9 @@ Hence, the respective oracles can be used as follows:
 \end{proof}
 \end{frame}
 
-\section{Conclusion}
+\section{\translate{Conclusion}}
 
-\begin{frame}{Summary}
+\begin{frame}{\translate{Summary}}
 
   Get the source of this theme and the demo presentation from
 
