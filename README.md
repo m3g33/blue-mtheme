@@ -2,14 +2,18 @@
 
 # Forked Version
 Modified version that uses a different color theme and has other cosmetic changes.\
-(See [demo slides][].) 
+(See [demo slides][].)\
+Note that you may use `\usetheme{metropolis}` or `\usepackage{mtheme-req}` (see demo folder).\
+The latter mainly includes font changes (preferred by me).
 
 ## Performed changes
 * Color theme changed from orange to Sherpa Blue
-* Use different math and mono fonts (XCharter and Inconsolata)
+* Use different math and mono fonts (XCharter and Inconsolata) (use mtheme-req)
 * Plain text (also in math) is black
 * \emph is theme-colored, black!2 bg color replaced by white, block environments filled, ...
 
+---
+---
 ---
 
 **IMPORTANT NOTICES FOR VERSION 1.0**
@@ -40,16 +44,16 @@ of your TeX distribution. Metropolis is on [CTAN][] since December
 Installing Metropolis from source, like any Beamer theme, involves four easy
 steps:
 
-1. **Download the source** with a `git clone` of the [Metropolis repository](https://github.com/matze/mtheme)
-   or as a [zip archive](https://github.com/matze/mtheme/archive/master.zip) of
+1. **Download the source** with a `git clone` of the [Metropolis repository](https://github.com/m3g33/blue-mtheme)
+   or as a [zip archive](https://github.com/m3g33/blue-mtheme/archive/master.zip) of
    the latest development version.
 2. **Compile the style files** by running `make sty` inside the downloaded
     directory. (Or run LaTeX directly on `source/metropolistheme.ins`.)
 3. **Move the resulting `*.sty` files** to the folder containing your
    presentation. To use Metropolis with many presentations, run `make install`
    or move the `*.sty` files to a folder in your TeX path instead (might require
-   `sudo` rights).
-4. **Use the theme for your presentation** by declaring `\usetheme{metropolis}` in
+   `sudo` rights). Also note that this is not compatible with using `\usepackage{mtheme-req}`!
+4. **Use the theme for your presentation** by declaring `\usetheme{metropolis}` or `\usepackage{mtheme-req}` in
     the preamble of your Beamer document.
 5. **For best results** install Mozilla's [Fira Sans](https://github.com/bBoxType/FiraSans).
 
@@ -61,7 +65,7 @@ Metropolis.
 
 ```latex
 \documentclass{beamer}
-\usetheme{metropolis}           % Use metropolis theme
+\usepackage{mtheme-req}           % Use outsourced .sty file or \usetheme{metropolis}
 \title{A minimal example}
 \date{\today}
 \author{Matthias Vogelgesang}
@@ -83,7 +87,7 @@ excellent [owl](https://github.com/rchurchley/beamercolortheme-owl) theme.
 
 ## License
 
-The theme itself is licensed under a [Creative Commons Attribution-ShareAlike
+The theme itself as well as this fork are licensed under a [Creative Commons Attribution-ShareAlike
 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/). This
 means that if you change the theme and re-distribute it, you *must* retain the
 copyright notice header and license it under the same CC-BY-SA license. This
