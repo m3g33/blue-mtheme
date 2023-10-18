@@ -7,7 +7,7 @@
 \date{\today}
 \author{Matthias Vogelgesang}
 \institute{Center for modern beamer themes}
-% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
+% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}} % use a logo
 
 
 % Used for the graph example
@@ -100,7 +100,7 @@ Hence, the respective oracles can be used as follows:
 
 \section{Graph Properties}
 
-\begin{frame}{Petersen Graph $P_{7,2}$\only<2->{: }\only<2>{Properties}\only<3>{Vertex Coloring}\only<4>{Hamiltonicity}}
+\begin{frame}{Petersen Graph $P_{7,2}$\only<2->{: }\only<2>{Properties}\only<3>{Vertex Coloring}\only<4>{Hamiltonicity}\only<5>{Arboricity}}
 Consider the generalized Petersen graph $P_{7,2}$\only<1>{:}\only<2->{.}
 
 \only<1>{
@@ -124,10 +124,11 @@ Consider the generalized Petersen graph $P_{7,2}$\only<1>{:}\only<2->{.}
 \begin{columns}[T]
 \begin{column}{.40\textwidth}
 
-	It
+	It is
 	\begin{itemize}
-		\item<3-> is 3-colorable,
-		\item<4-> is Hamiltonian.
+		\item<3-> 3-colorable,
+		\item<4-> Hamiltonian,
+		\item<5-> 2-arboric.
 	\end{itemize}
 
 \end{column}%
@@ -204,6 +205,26 @@ Consider the generalized Petersen graph $P_{7,2}$\only<1>{:}\only<2->{.}
 \end{tikzpicture}
 }
 
+% Arboricity
+\only<5>{
+\begin{tikzpicture}
+  \graph[layout1=7, radius=6.5em, edges={niceBlue}] {subgraph C_n [name=A]};
+  \graph[layout1=7, radius=3.5em] {subgraph I_n [name=B]};
+  
+  \def\n{7} \def\k{2} 
+  \foreach \i in {1,...,\n}{ \draw[niceBlue] (A \i) to (B \i); }
+  \foreach \i [evaluate={\j=int(1+mod(int(\i+\k-1),\n))}] in {1,...,\n} { \draw[niceBlue] (B \i) to (B \j); }
+  \draw[niceRed] (A 1) to (B 1);
+  \draw[niceRed] (A 2) to (A 3);
+  \draw[niceRed] (B 1) to (B 6);
+  \draw[niceRed] (B 6) to (B 4);
+  \draw[niceRed] (B 4) to (B 2);
+  \draw[niceRed] (B 2) to (B 7);
+  \draw[niceRed] (B 7) to (B 5);
+  \draw[niceRed] (B 5) to (B 3);
+\end{tikzpicture}
+}
+
 \end{figure}%
 %
 \end{column}%
@@ -215,7 +236,7 @@ Consider the generalized Petersen graph $P_{7,2}$\only<1>{:}\only<2->{.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%% Conclusion %%%%%%%%%
+%%%%%%%%% Conclusion %%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
