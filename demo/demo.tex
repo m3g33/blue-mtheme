@@ -10,16 +10,36 @@
 % \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
 
 
+% Used for the graph example
+\usetikzlibrary{graphs.standard}
+\definecolor{niceRed}{HTML}{d20000}
+\definecolor{niceOrange}{HTML}{f59a23}
+\definecolor{niceGreen}{HTML}{7ec636}
+\definecolor{niceBlue}{HTML}{007aff}
+
+\tikzset{graphs/layout1/.style = {
+    nodes={fill=nicerBlue!20, draw=nicerBlue, line width=1.2pt, outer sep=.55pt,minimum size=1.3em, circle}, clockwise, empty nodes, n=#1,
+    edges={line width=1.5pt}
+    },
+    every picture/.style={line width=1.5pt}
+}
+
 \begin{document}
-\metroset{block=fill} % to fill block environments
+\metroset{block=fill} % fill block environments
 \nocite{beamer} % cite the Beamer package
 
 \maketitle
 
-\begin{frame}{Table of contents}
-  \setbeamertemplate{section in toc}[sections numbered]
+\begin{frame}{Table of Contents}
+  \setbeamertemplate{section in toc}[sections numbered] % enumerate ToC 
   \tableofcontents[hideallsubsections]
 \end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% Simple Proofs %%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \section{Simple Proofs}
 
@@ -28,37 +48,17 @@
 	The square root of two is irrational.
 	\end{theorem}
  	The following proof uses the \emph{fundamental theorem of arithmetic}.
-	\begin{proof}
+	\begin{proof}[Proof\nopunct]
 	For the sake of contradiction, assume that $\sqrt{2}$ is rational. Hence, there are integers $m,n \neq 0$ such that $\sqrt{2} = \frac{m}{n}$ or rather $\sqrt{2} \cdot n = m$.
         Squaring both sides yields $2 \cdot n^2 = m^2$. Clearly a contradiction.
 	\end{proof}
 \end{frame}
 
-\begin{frame}{Infinitude of Primes}
-	\begin{theorem}
-	There are infinitely many primes.
-	\end{theorem}
-	\begin{lemma}
-	The value of Riemann zeta function $\zeta(2)$ is transcendental, namely,
-	\begin{align*}\zeta(2) = \prod\limits_{p \in \mathbb{P}} \frac{1}{1 - \frac{1}{p^2}} = \frac{\pi^2}{6}.\end{align*}
-	\end{lemma}
-	\begin{proof}
-	For the sake of contradiction, assume that there are only finitely many primes. Hence, $\zeta(2)$ is rational. Clearly a contradiction.
-	\end{proof}
-\end{frame}
 
-\section{Graph Examples}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Complexity Theory %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Properties of the Complete Graph}
-Let $G=K_7$ be the complete graph with seven vertices. $G$ has several properties.
-\begin{example}
-\begin{itemize}[<+- | alert@+>]
-	\item There is no vertex cover with only five vertices.
-	\item $G$ is not planar\alert<4>{\only<4>{ (only the $K_1$, $K_2$, $K_3$, and $K_4$ are)}.}
-	\item $G$ has an Eulerian cycle with length 21.
-\end{itemize}
-\end{example}
-\end{frame}
 
 \section{Complexity Theory}
 
@@ -67,12 +67,12 @@ Recall that \textsc{sat} and \textsc{taut} are \textbf{NP}-complete and \textbf{
 \begin{theorem}
 \textbf{NP} and \textbf{coNP} are indistinguishable with respect to Cook reductions.
 \end{theorem}
-\begin{proof}
-We show that $\textsc{sat} \leq_C \textsc{taut}$ and then $\textsc{taut} \leq_C \textsc{sat}$. Let $\varphi$ be a formula.
+\begin{proof}[Proof\nopunct]
+We show that $\textsc{sat} \leq_C \textsc{taut}$ and then $\textsc{taut} \leq_C \textsc{sat}$. Let $\varphi$ be a formula. Note that
 \begin{enumerate}
-	\item Note that $\varphi$ is satisfiable \textit{iff} $\neg \varphi$ is not a tautology.
+	\item $\varphi$ is satisfiable \textit{iff} $\neg \varphi$ is not a tautology.
 	
-	\item Note that $\varphi$ is a tautology \textit{iff} $\varphi$ is satisfiable and $\neg\varphi$ is not.
+	\item $\varphi$ is a tautology \textit{iff} $\varphi$ is satisfiable and $\neg\varphi$ is not.
 \end{enumerate}
 Hence, the respective oracles can be used as follows:
 \begin{columns}[T,onlytextwidth]
@@ -86,19 +86,146 @@ Hence, the respective oracles can be used as follows:
 	\begin{algorithmic}[1]
         \Procedure{taut}{$\varphi$}
             \State \textbf{return} $\textsc{sat}(\varphi) \land \neg \textsc{sat}(\neg \varphi)$
-        \EndProcedure
+        \EndProcedure {\qedhere\text{\,\,}}
     \end{algorithmic}
     \end{columns}
 \end{proof}
 \end{frame}
 
-\section{\translate{Conclusion}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% Graph Example %%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Graph Properties}
+
+\begin{frame}{Petersen Graph $P_{7,2}$\only<2->{: }\only<2>{Properties}\only<3>{Vertex Coloring}\only<4>{Hamiltonicity}}
+Consider the generalized Petersen graph $P_{7,2}$\only<1>{:}\only<2->{.}
+
+\only<1>{
+\begin{figure}[h!]
+
+% Generalized Petersen graph P_{7,2} (n=7, k=2)
+\begin{tikzpicture}
+  \graph[layout1=7, radius=6.5em] {subgraph C_n [name=A]};
+  \graph[layout1=7, radius=3.5em] {subgraph I_n [name=B]};
+  
+  \def\n{7} \def\k{2} 
+  \foreach \i in {1,...,\n}{ \draw (A \i) to (B \i); }
+  \foreach \i [evaluate={\j=int(1+mod(int(\i+\k-1),\n))}] in {1,...,\n} { \draw (B \i) to (B \j); }
+\end{tikzpicture}
+\caption{The Petersen graph $P_{7,2}$}
+\end{figure}
+}
+\vspace*{.3cm}
+\only<2->{
+
+\begin{columns}[T]
+\begin{column}{.40\textwidth}
+
+	It
+	\begin{itemize}
+		\item<3-> is 3-colorable,
+		\item<4-> is Hamiltonian.
+	\end{itemize}
+
+\end{column}%
+\hfill%
+\begin{column}{.40\textwidth}
+
+\begin{figure}[h!]
+
+\only<2>{
+\begin{tikzpicture}
+  \graph[layout1=7, radius=6.5em] {subgraph C_n [name=A]};
+  \graph[layout1=7, radius=3.5em] {subgraph I_n [name=B]};
+  
+  \def\n{7} \def\k{2} 
+  \foreach \i in {1,...,\n}{ \draw (A \i) to (B \i); }
+  \foreach \i [evaluate={\j=int(1+mod(int(\i+\k-1),\n))}] in {1,...,\n} { \draw (B \i) to (B \j); }
+\end{tikzpicture}
+}
+
+% 3-colorable
+\only<3>{
+\tikzstyle{col1} = [fill=niceRed!20, draw=niceRed]
+\tikzstyle{col2} = [fill=niceBlue!20, draw=niceBlue]
+\tikzstyle{col3} = [fill=niceOrange!20, draw=niceOrange]
+\tikzset{every node/.append style={line width=1.5pt, outer sep=.73pt, minimum size=1.3em, circle}}
+
+\begin{tikzpicture}[x=1em,y=1em]
+  \graph[layout1=7, radius=6.5em] {subgraph C_n [name=A]};
+  \graph[layout1=7, radius=3.5em] {subgraph I_n [name=B]};
+  
+	% outer radius=6.5em
+	\foreach \x in {1,6} \node[col1] (A \x) at ({6.5*sin(360/7*(\x-1))},{6.5*cos(360/7*(\x-1))}) {};
+	\foreach \x in {2,4} \node[col2] (A \x) at ({6.5*sin(360/7*(\x-1))},{6.5*cos(360/7*(\x-1))}) {};
+	\foreach \x in {3,5,7} \node[col3] (A \x) at ({6.5*sin(360/7*(\x-1))},{6.5*cos(360/7*(\x-1))}) {};
+	% inner radius=3.5em
+	\foreach \x in {2,5} \node[col1] (B \x) at ({3.5*sin(360/7*(\x-1))},{3.5*cos(360/7*(\x-1))}) {};
+	\foreach \x in {3,6,7} \node[col2] (B \x) at ({3.5*sin(360/7*(\x-1))},{3.5*cos(360/7*(\x-1))}) {};
+	\foreach \x in {1,4} \node[col3] (B \x) at ({3.5*sin(360/7*(\x-1))},{3.5*cos(360/7*(\x-1))}) {};
+
+  
+  \def\n{7} \def\k{2} 
+  \foreach \i in {1,...,\n}{\pgfmathsetmacro\res{int(max(1, mod(\i+1,\n+1)))}
+  	\draw (A \i) to (A \res);
+  	\draw (A \i) to (B \i);
+  }
+  \foreach \i [evaluate={\j=int(1+mod(int(\i+\k-1),\n))}] in {1,...,\n} { \draw (B \i) to (B \j); }
+\end{tikzpicture}
+}
+
+% Hamiltonian
+\only<4>{
+\tikzstyle{hc} = [niceBlue]
+\begin{tikzpicture}
+  \graph[layout1=7, radius=6.5em] {subgraph C_n [name=A]};
+  \graph[layout1=7, radius=3.5em] {subgraph I_n [name=B]};
+  
+  \def\n{7} \def\k{2} 
+  \foreach \i in {1,...,\n}{ \draw (A \i) to (B \i); }
+  \foreach \i [evaluate={\j=int(1+mod(int(\i+\k-1),\n))}] in {1,...,\n} { \draw (B \i) to (B \j); }
+  \draw[hc] (A 1) to (A 2);
+  \draw[hc] (A 2) to (B 2);
+  \draw[hc] (B 2) to (B 4);
+  \draw[hc] (B 4) to (A 4);
+  \draw[hc] (A 4) to (A 3);
+  \draw[hc] (A 3) to (B 3);
+  \draw[hc] (B 3) to (B 1);
+  \draw[hc] (B 1) to (B 6);
+  \draw[hc] (B 6) to (A 6);
+  \draw[hc] (A 6) to (A 5);
+  \draw[hc] (A 5) to (B 5);
+  \draw[hc] (B 5) to (B 7);
+  \draw[hc] (B 7) to (A 7);
+  \draw[hc] (A 7) to (A 1);
+\end{tikzpicture}
+}
+
+\end{figure}%
+%
+\end{column}%
+\end{columns}
+
+}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Conclusion %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Conclusion}
 
 \begin{frame}{\translate{Summary}}
 
   Get the source of this theme and the demo presentation from
 
-  \begin{center}\url{github.com/matze/mtheme}\end{center}
+  \begin{center}\url{github.com/m3g33/blue-mtheme}\end{center}
 
   The theme \emph{itself} is licensed under a
   \href{http://creativecommons.org/licenses/by-sa/4.0/}{Creative Commons
