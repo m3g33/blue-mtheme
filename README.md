@@ -32,7 +32,7 @@ principles of the theme were described in a blog post
 
 Not convinced? Have a look at the [demo slides][].
 
-![Sample](https://i.imgur.com/etLxZoX.png)
+![Sample](https://i.imgur.com/ZwtfN3y.png)
 
 
 ## Installation
