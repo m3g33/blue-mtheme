@@ -33,7 +33,11 @@
 \newtheorem{conjecture}[theorem]{\translate{Conjecture}}
 \newtheorem{counterexample}[theorem]{\translate{Counterexample}}
 \newtheorem{observation}[theorem]{\translate{Observation}}
+\newtheorem{proposition}[theorem]{\translate{Proposition}}
 \newtheorem{remark}[theorem]{\translate{Remark}}
 
 % packages needed for the example slides
-\usepackage{algpseudocode}
+\usepackage[noEnd=true,indLines=false]{algpseudocodex}
+\usepackage{algorithm}
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}
+\algrenewcommand\algorithmicensure{\textbf{Output:}}
