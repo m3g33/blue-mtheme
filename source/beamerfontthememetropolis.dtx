@@ -86,48 +86,30 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% We search for regular, italic, light, light italic, mono, and mono bold
-% fonts under the default |Fira Sans| and |Fira Mono| names. If this fails,
-% the suffix OT --- used by some Linux distributions --- will be tried. If this
-% also fails, a warning will be displayed and the standard fonts will be used.
+% Loading "custom" font packages
+% Fira Sans for normal sans-serif font
+% XCharter for serif and math font
+% zcoN for monospace font
 %
 %    \begin{macrocode}
-  \iffontsavailable{Fira Sans Light,%
-                    Fira Sans Light Italic,%
-                    Fira Sans,%
-                    Fira Sans Italic}%
-  {%
-    \setsansfont[ItalicFont={Fira Sans Light Italic},%
-                 BoldFont={Fira Sans},%
-                 BoldItalicFont={Fira Sans Italic}]%
-                {Fira Sans Light}%
-  }{%
-    \iffontsavailable{Fira Sans Light OT,%
-                      Fira Sans Light Italic OT,%
-                      Fira Sans OT,%
-                      Fira Sans Italic OT}%
-    {%
-      \setsansfont[ItalicFont={Fira Sans Light Italic OT},%
-                   BoldFont={Fira Sans OT},%
-                   BoldItalicFont={Fira Sans Italic OT}]%
-                  {Fira Sans Light OT}%
-    }{%
-      \PackageWarning{beamerthememetropolis}{%
-        Could not find Fira Sans fonts%
-      }
-    }
-  }
-  \iffontsavailable{Fira Mono, Fira Mono Bold}{%
-    \setmonofont[BoldFont={Fira Mono Medium}]{Fira Mono}%
-  }{%
-    \iffontsavailable{Fira Mono OT, Fira Mono Bold OT}{%
-      \setmonofont[BoldFont={Fira Mono Medium OT}]{Fira Mono OT}%
-    }{%
-      \PackageWarning{beamerthememetropolis}{%
-        Could not find Fira Mono fonts%
-      }
-    }
-  }
+\RequirePackage{xcharter-otf}
+\RequirePackage{fontspec}
+\RequirePackage{FiraSans}
+\defaultfontfeatures{Mapping=tex-text,Scale=MatchUppercase}
+\setmainfont{XCharter}
+% Fix Fira being too bold 
+\setsansfont[%
+        BoldFont = {Fira Sans SemiBold},%
+		BoldItalicFont = {Fira Sans SemiBold Italic},%
+		BoldSlantedFont = {Fira Sans SemiBold Italic},%
+		BoldSwashFont = {Fira Sans SemiBold},%
+		]%
+        {Fira Sans}%
+\setmonofont{zcoN-Regular.otf}
+%Use different font families for some math symbols
+\setmathfont{Latin Modern Math}[range=cal]% use calligraphic symbols from other font family due to legibility
+\setmathfont{TeX Gyre DejaVu Math}[range={"0028,"0029,"007C,"007B,"007D,"1D49E}]% use brackets from other font family due to spacing
+
   \AtBeginEnvironment{tabular}{%
     \addfontfeature{Numbers={Monospaced}}%
   }
